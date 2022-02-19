@@ -1,0 +1,78 @@
+{
+	"name": "weatherapp",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"proxy": "http://localhost:5970",
+	"engines": {
+		"node": ">=16.14.0",
+		"yarn": ">=1.15.*"
+	},
+	"scripts": {
+		"start": "cd build-server && node server.js",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start-server": "nodemon --watch server --exec babel-node server/server.js",
+		"start-client": "react-scripts start",
+		"build-client": "react-scripts build",
+		"build-server": "babel ./server --out-dir build-server",
+		"test-client": "react-scripts test",
+		"eject-client": "react-scripts eject"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@babel/cli": "^7.10.1",
+		"@babel/core": "^7.10.2",
+		"@babel/node": "^7.10.1",
+		"@babel/preset-env": "^7.10.2",
+		"@fullerstack/nax-ipware": "^0.10.0",
+		"@testing-library/jest-dom": "^4.2.4",
+		"@testing-library/react": "^9.5.0",
+		"@testing-library/user-event": "^7.2.1",
+		"axios": "^0.25.0",
+		"bcrypt": "^5.0.1",
+		"body-parser": "^1.19.1",
+		"bootstrap": "^5.1.3",
+		"connect-mongo": "^4.6.0",
+		"cors": "^2.8.5",
+		"dotenv": "^16.0.0",
+		"express": "^4.17.2",
+		"express-session": "^1.17.2",
+		"http": "^0.0.1-security",
+		"https": "^1.0.0",
+		"mongoose": "~5.9.19",
+		"node-fetch": "^3.2.0",
+		"node-ipinfo": "^3.0.2",
+		"openweather-apis": "^4.4.2",
+		"passport": "^0.5.2",
+		"passport-jwt": "^4.0.0",
+		"passport-local": "^1.0.0",
+		"react": "^17.0.2",
+		"react-bootstrap": "^2.1.2",
+		"react-dom": "^17.0.2",
+		"react-redux": "^7.2.6",
+		"react-router-dom": "^5.2.0",
+		"react-scripts": "5.0.0",
+		"reactstrap": "^9.0.1",
+		"redux": "^4.1.2",
+		"request": "^2.88.2",
+		"uuid": "^8.3.2",
+		"validatorjs": "^3.22.1"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	}
+}
