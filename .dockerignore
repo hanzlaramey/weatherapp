@@ -1,0 +1,10 @@
+docker-compose.env
+docker-compose.yml
+Dockerfile
+node_modules
+build
+build-server
+coverage
+test
+.vscode
+.env
