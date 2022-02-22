@@ -9,7 +9,7 @@ export const NavBar = () => {
 			<Container>
 				<Navbar.Brand href="#home"><img src={logo} width="50px" alt="logo" /></Navbar.Brand>
 				<Nav className="ms-auto">
-					<Nav.Link href="/logout">Logout</Nav.Link>
+					<Nav.Link to="/logout">Logout</Nav.Link>
 				</Nav>
 			</Container>
 		</Navbar>
