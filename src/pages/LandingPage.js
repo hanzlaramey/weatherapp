@@ -22,9 +22,9 @@ export const LandingPage = () => {
 						<Link to="/register">
 							<Button variant="outline-light" className="m-2 mt-5 px-5  rounded-pill">Register</Button>
 						</Link>
-						<Link to={"/api/docs"}>
+						<a target="_blank" href="/api/docs">
 							<Button variant="outline-light" className="m-2 mt-5 px-5  rounded-pill">Swagger Documentation</Button>
-						</Link>
+						</a>
 					</Col>
 				</Row>
 			</Container>
