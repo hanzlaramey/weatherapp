@@ -13,11 +13,12 @@ export const LoginForm = () => {
 	const [error, setError] = useState(false);
 	const [redirect, setRedirect] = useState(false);
 
-	if(redirect || user?.email?.trim()){
+	if(redirect || user.email){
 		return <Redirect to='/home' />;
 	}
 
 	const formHandler = async () => {
+		let mounted = true;
 		if(!email.trim() || !password.trim()) return setError("Both Fields are Required!");
 		
 		const response = await fetch("/api/login", {
@@ -29,13 +30,15 @@ export const LoginForm = () => {
 
 		const data = await response.json();
 
-		if(data.status){
+		if(data.status && mounted){
 			const {_id, firstName, lastName, email} = data.user;
 			dispatch(changeUser(_id, firstName, lastName, email));
-			return setRedirect(true);
+			setRedirect(true);
+			return () => mounted = false;
 		}
 		else{
-			return setError(data.error);
+			setError(data.error);
+			return () => mounted = false;
 		}
 	}
 

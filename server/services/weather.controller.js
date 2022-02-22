@@ -7,21 +7,21 @@ import { IPinfoWrapper } from 'node-ipinfo';
 export async function searchCities(req, res){
 	let {city} = req.body;
 	city = city.trim();
-	if(!city || city.length < 1) return res.send({status: false, error: "City is required!", data: null});
+	if(!city || city.length < 1) return res.status(401).send({status: false, error: "City is required!", data: null});
 	let matchedCities = await getLonLat(city);
 	if(matchedCities.length > 0) {
 		matchedCities = convertCountryCode(matchedCities);
-		return res.send({status: true, data: matchedCities});
+		return res.status(200).send({status: true, data: matchedCities});
 	}
-	else return res.send({status: false, data: null});
+	else return res.status(500).send({status: false, error: "Internal Server Error"});
 }
 
 export async function getWeatherFromCoordinates(req, res){
 	let {lat,long} = req.body;
-	if(!lat || lat.length < 1 || !long || long.length < 1) return res.send({status: false, error: "Longitude and Latitude are required!", data: null});
+	if(!lat || lat.length < 1 || !long || long.length < 1) return res.status(401).send({status: false, error: "Longitude and Latitude are required!", data: null});
 	const response = await getWeather([lat, long]);
-	if(response) return res.send({status: true, data: response});
-	else return res.send({status: false, data: null});
+	if(response) return res.status(200).send({status: true, data: response});
+	else return res.status(500).send({status: false, error: "Internal Server Error"});
 }
 
 export async function getIpLocationWeather(req, res){
@@ -33,8 +33,8 @@ export async function getIpLocationWeather(req, res){
 		lonLat = ipAddressInfo.loc.split(",");
 	}
 	const weather = await getWeather(lonLat);
-	if(weather) return res.send({status: true, data: {weather, ipAddressInfo}});
-	else return res.send({status: false, data: null, error: "error fetching weather, please try again later!"});
+	if(weather) return res.status(200).send({status: true, data: {weather, ipAddressInfo}});
+	else return res.status(500).send({status: false, data: null, error: "error fetching weather, please try again later!"});
 }
 
 async function getWeather(lonLat){

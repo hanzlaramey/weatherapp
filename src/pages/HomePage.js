@@ -15,7 +15,6 @@ export const HomePage = () => {
 	const [city, setCity] = useState(false);
 	const [stateOrRegion, setStateOrRegion] = useState(false);
 	const [country, setCountry] = useState(false);
-	const [timeZoneOffset, setTimeZoneOffset] = useState(false);
 	
 	const fetchWeatherWithIp = async (archived) => {
 		setLoading(true);
@@ -31,7 +30,6 @@ export const HomePage = () => {
 			setIpData(data.data.ipAddressInfo)
 			setWeatherData(data.data.weather)
 			setLoading(false);
-			console.log("Data Loading", data.data);
 		}
 	};
 
@@ -55,7 +53,6 @@ export const HomePage = () => {
 			setCity(updatedCity);
 			setStateOrRegion(updatedStateOrRegion);
 			setCountry(updatedCountry);
-			setTimeZoneOffset(data.data.timezone_offset);
 			setLoading(false);
 		}
 		else{
@@ -132,12 +129,11 @@ export const HomePage = () => {
 						</Form>
 					</Col>
 					<Col md="12" className="my-5">
-						<Row className="justify-content-around">
+						<Row className="">
 							{cities.length > 0 && 
-								cities.map((value) => {
-									console.log(value);
+								cities.map((value, key) => {
 									return (
-										<Col md="3" className="m-2">
+										<Col md="3" className="mx-5 my-3" key={key}>
 											<Button variant="outline-light" size="lg" type="submit" className="rounded-pill px-4" onClick={() => fetchWeatherOfCity(value.lat, value.lon, value.name, value.state ? value.state : (value.region ? value.region : ""), value.country)}>
 												{value.name}, {value.state ? value.state : ""} {value.region ? value.region : ""} {value.country}
 											</Button>
@@ -160,7 +156,7 @@ export const HomePage = () => {
 									<img src={`https://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png`} alt="weather"/>
 								</Col>
 								<Col md="2" className="mt-3">
-									<h4 className="text-light display-1">
+									<h4 className="text-light display-2">
 										{weatherData.current.temp}&#176;
 									</h4>
 								</Col>

@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
-	"proxy": "http://localhost:5970",
+	"proxy": "http://localhost:5993",
 	"engines": {
 		"node": ">=16.14.0",
 		"yarn": ">=1.15.*"
@@ -57,8 +57,10 @@
 		"reactstrap": "^9.0.1",
 		"redux": "^4.1.2",
 		"request": "^2.88.2",
+		"swagger-ui-express": "^4.3.0",
 		"uuid": "^8.3.2",
-		"validatorjs": "^3.22.1"
+		"validatorjs": "^3.22.1",
+		"yamljs": "^0.3.0"
 	},
 	"browserslist": {
 		"production": [

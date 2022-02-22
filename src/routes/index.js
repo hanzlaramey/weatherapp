@@ -7,8 +7,6 @@ import RegisterForm from "../pages/Register";
 import LandingPage from "../pages/LandingPage";
 import HomePage from "../pages/HomePage";
 import LogOut from "../pages/Logout";
-// import Register from "../pages/Authentication/Register";
-
 
 export const publicRoutes = [
 

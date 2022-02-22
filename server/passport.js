@@ -23,7 +23,6 @@ passport.use(new LocalStrategy(
 	async function(email, password, done) {
 		try {
 			let user = await User.findOne({ email }).select("+password");
-			console.log("User", user);
 			if (!user)
 				return done(null, false, { status: false, error: "User doesn't exist" });
 

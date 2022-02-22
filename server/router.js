@@ -9,6 +9,7 @@ import {saveRequest} from "./middlewares/recordRequest.middleware.js";
 import * as AuthController from "./services/auth.controller.js";
 import * as WeatherController from "./services/weather.controller.js";
 
+const comment = "/** * @swagger * get: * description: use to request all customers */"
 // api prefix of app. it can be used as /api/v1/ etc.
 const API_PREFIX = "/api/";
 

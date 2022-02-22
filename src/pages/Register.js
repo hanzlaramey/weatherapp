@@ -34,8 +34,8 @@ export const RegisterForm = () => {
 		const data = await response.json();
 
 		if (data.status === true) {
-			const {_id, firstName, lastName, emailFetched} = data.user;
-			dispatch(changeUser(_id, firstName, lastName, emailFetched));
+			const {_id, firstName, lastName, email} = data.user;
+			dispatch(changeUser(_id, firstName, lastName, email));
 			setRedirect(true);
 		} else {
 			setError(data.error || data.errors);
@@ -52,9 +52,24 @@ export const RegisterForm = () => {
 							<Row>
 								<Col md="12">
 									{error &&
-										<Alert variant="danger" className="rounded-pill my-3">
-											{error}
-										</Alert>
+										<>
+											{error instanceof Object ? 
+											<>
+												{Object.keys(error).map(e => {
+													return (
+														<Alert variant="danger" className="rounded-pill my-3" key={e}>
+															{error[e]}
+														</Alert>
+													);
+												})}
+											</> 
+											:
+												<Alert variant="danger" className="rounded-pill my-3">
+													{error}
+												</Alert>
+											}
+
+										</>
 									}
 								</Col>
 								<Col md="6">

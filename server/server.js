@@ -9,6 +9,7 @@ import passport from "./passport.js";
 import session from "express-session";
 import { v4 as uuidv4 } from 'uuid';
 import http from "http";
+import {setupSwagger} from "./swagger.js";
 
 const app = express();
 const port = process.env.port || 3600;
@@ -58,6 +59,8 @@ async function initServer(){
 
 	// Declare the path to frontend's static assets
 	app.use(express.static("../build"));
+
+	setupSwagger(app);
 
 	//create http server
 	const httpServer = http.createServer(app);
